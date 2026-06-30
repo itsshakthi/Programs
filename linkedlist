@@ -1,0 +1,48 @@
+class node:
+    #node creation
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+#insert in start
+def insertstart(head,val):
+    nn = node(val)
+    nn.next = head
+    return head
+
+#insert in end
+def insertend(head,val):
+    nn = node(val)
+    if not head:
+        return nn
+    curr = head
+    while curr.next:
+        curr = curr.next
+    curr.next = nn
+    return head
+
+#insert in target
+def inserttarget(head,target,val):
+    nn = node(val)
+    if not head:
+        return nn
+    curr = head
+    while curr:
+        if curr.val == target:
+            nn.next = curr.next
+            curr.next = nn
+            return head
+        curr = curr.next
+    return head
+
+#reverse 
+def reverse(head):
+    prev = None
+    curr = head
+    while curr:
+        next_node = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_node
+    return prev
+
+
